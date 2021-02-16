@@ -9,7 +9,7 @@ import { AuthenticationService } from './services/auth/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mycareer-front';
+  title = 'My Career App';
 
   currentUser: User;
 

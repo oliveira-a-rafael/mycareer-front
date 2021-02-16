@@ -25,14 +25,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './components/home/home.component';
 import { MatListModule } from '@angular/material/list';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
+import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CareersListComponent,
+    CareersAddComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,9 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

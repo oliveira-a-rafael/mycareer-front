@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Career } from '../models/career.model'
+import { Career } from '@app/models/career/career.model';
 import { Observable } from 'rxjs';
 import { environment } from '@configs/environments/environment';
 
@@ -15,17 +15,6 @@ export class CareerService {
 
   getAll(): Observable<Career[]> {
     return this.http.get<Career[]>(`${environment.apiUrl}/careers`);
-  }
-
-  getAllFake(): Observable<Career[]> {
-    const listCareer: Career[] = [
-      {
-        title: 'saaa',
-        teamName: 'dsadasd'
-      }
-    ];
-
-    return ;
   }
 
 }

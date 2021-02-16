@@ -7,3 +7,8 @@ mat-card {
 mat-form-field {
     display: block;
 }
+
+mat-card-content .loading {
+    display: grid;
+    place-items: center;
+}
