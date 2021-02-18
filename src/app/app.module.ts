@@ -29,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
 import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderDefaultComponent } from './components/header/header-default/header-default.component';
 
 
 @NgModule({
@@ -37,8 +38,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     LoginComponent,
     HomeComponent,
     CareersListComponent,
-    CareersAddComponent
-  ],
+    CareersAddComponent,
+    HeaderDefaultComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

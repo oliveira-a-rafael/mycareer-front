@@ -1,6 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Career } from '@app/models/career/career.model';
-import { CareerService } from '@app/services/career.service';
+import { CareerService } from '@app/services/careers/career.service';
 
 @Component({
   selector: 'app-careers-list',
@@ -15,29 +16,38 @@ export class CareersListComponent implements OnInit {
   screenTtile = 'My Careers';
   careers?: Career[];
 
-  constructor(private careerService: CareerService) { }
+  constructor(private careerService: CareerService, private router: Router) { }
 
   ngOnInit(): void {
+    this.clearLocalStorage();
     this.loading = true;
     this.retrieveCareers();
   }
 
   getRecord(row): void {
-    console.log(row);
+    this.router.navigateByUrl('/careers/edit' + row.title);
+  }
+
+  editCareer(career: Career): void {
+    this.clearLocalStorage();
+    window.localStorage.setItem('objCareer', JSON.stringify(career));
+    this.router.navigate(['careers/edit']);
+  }
+
+  clearLocalStorage(): void{
+    window.localStorage.removeItem('objCareer');
   }
 
   retrieveCareers(): void {
     this.careerService.getAll()
-    .subscribe(
-      data => {
-        this.loading = false;
-        this.careers = data;
-        console.log(this.careers);
-      },
-      err => {
-        this.loading = false;
-        console.log(err);
-      }
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.careers = data;
+        },
+        err => {
+          this.loading = false;
+        }
       );
   }
 

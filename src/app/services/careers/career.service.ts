@@ -17,4 +17,13 @@ export class CareerService {
     return this.http.get<Career[]>(`${environment.apiUrl}/careers`);
   }
 
+  create(career: Career): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/career/new`, career);
+  }
+
+  update(id: number, career: Career): Observable<any> {
+    console.log(`${environment.apiUrl}/career/${id}`);
+    return this.http.put(`${environment.apiUrl}/career/${id}`, career);
+  }
+
 }

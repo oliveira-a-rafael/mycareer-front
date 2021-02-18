@@ -22,13 +22,13 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editCareer(row)"></tr>
 
 </table>
 
 <mat-card-content>
     <div fxLayout="row" fxLayoutAlign="end start">
-        <button mat-fab color="primary" aria-label="Add Career">
+        <button mat-fab color="primary" routerLink="/careers/add" aria-label="Add Career">
             <mat-icon>add</mat-icon>
         </button>
     </div>

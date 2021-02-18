@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './helpers/auth.guard';
 import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
 import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
+import { Career } from './models/career/career.model';
 
 const routes: Routes = [
 
   { path: '', component: CareersListComponent, canActivate: [AuthGuard] },
   { path: 'careers', component: CareersListComponent, canActivate: [AuthGuard] },
   { path: 'careers/add', component: CareersAddComponent, canActivate: [AuthGuard] },
+  { path: 'careers/edit', component: CareersAddComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 
 ];
