@@ -18,8 +18,14 @@
                     <input matInput placeholder="Club Name" formControlName="team_name" required>
                 </mat-form-field>
             </mat-card-content>
-            <mat-card-footer fxLayoutAlign="center">
+            <mat-card-footer fxLayoutGap="20px" fxLayout="column" fxLayoutAlign="center">
                 <button mat-flat-button color="primary">Save</button>
+
+                <div *ngIf="currentCareer" fxLayoutAlign="end start">
+                    <button (click)="openDeleteDialog()" mat-fab color="warn" aria-label="Delete this career">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
             </mat-card-footer>
         </mat-card-content>
     </form>

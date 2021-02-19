@@ -4,8 +4,6 @@ import { Career } from '@app/models/career/career.model';
 import { Observable } from 'rxjs';
 import { environment } from '@configs/environments/environment';
 
-const baseUrl = 'http://localhost:8080/careersTest';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +20,6 @@ export class CareerService {
   }
 
   update(id: number, career: Career): Observable<any> {
-    console.log(`${environment.apiUrl}/career/${id}`);
     return this.http.put(`${environment.apiUrl}/career/${id}`, career);
   }
 

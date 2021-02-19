@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -27,7 +27,7 @@ export class CareersAddComponent implements OnInit {
     this.reactiveCareerForm();
   }
 
-  clearLocalStorage(): void{
+  clearLocalStorage(): void {
     window.localStorage.removeItem('objCareer');
   }
 
@@ -48,22 +48,20 @@ export class CareersAddComponent implements OnInit {
       });
 
     if (this.currentCareer) {
-
       this.careerForm.setValue(
         {
           title: this.currentCareer.title,
           team_name: this.currentCareer.team_name
         }
       );
-
     }
   }
 
   submitCareerForm(): void {
     if (this.careerForm.valid) {
-      if(this.currentCareer && this.currentCareer.ID){
+      if (this.currentCareer && this.currentCareer.ID) {
         this.updateCareer();
-      }else{
+      } else {
         this.createCareer();
       }
     }
@@ -71,7 +69,7 @@ export class CareersAddComponent implements OnInit {
 
   createCareer(): void {
     if (this.careerForm.valid) {
-      this.careerService.create(this.careerForm.value).subscribe(res => {
+      this.careerService.create(this.careerForm.value).subscribe(() => {
         this.router.navigateByUrl('/careers');
       });
     }
@@ -79,12 +77,14 @@ export class CareersAddComponent implements OnInit {
 
   updateCareer(): void {
     if (this.careerForm.valid) {
-      console.log("cccc: " + this.currentCareer.ID);
-      
-      this.careerService.update(this.currentCareer.ID, this.careerForm.value).subscribe(res => {
+      this.careerService.update(this.currentCareer.ID, this.careerForm.value).subscribe(() => {
         this.router.navigateByUrl('/careers');
       });
     }
+  }
+
+  openDeleteDialog(): void {
+    console.log('not implemented yeat!');
   }
 
 }
