@@ -33,7 +33,6 @@ export class CareerDetailComponent implements OnInit {
           data => {
             this.loading = false;
             this.players = data;
-            console.log(data);
           },
           err => {
             console.log('erros on retrieve players from career: ' + err);
@@ -60,7 +59,7 @@ export class CareerDetailComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.data = { id: player.ID, points: player.points_current };
+    dialogConfig.data = player;
     this.dialog.open(DialogUpdatePointsComponent, dialogConfig).afterClosed().subscribe(() => this.afterUpdatePlayer(player));
   }
 

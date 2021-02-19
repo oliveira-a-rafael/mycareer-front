@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Player } from '@app/models/player/player';
 import { PlayerService } from '@app/services/players/player.service';
 
 @Component({
@@ -12,24 +13,27 @@ import { PlayerService } from '@app/services/players/player.service';
 
 export class DialogUpdatePointsComponent implements OnInit {
 
-  form: FormGroup;
-  idPlayer: number;
-  currentPoints: number;
+  updateForm: FormGroup;
+  player: Player;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private playerService: PlayerService,
               private dialogRef: MatDialogRef<DialogUpdatePointsComponent>,
-              @Inject(MAT_DIALOG_DATA) data)
-               {
-    this.idPlayer = data.id;
-    this.currentPoints = data.points;
+              @Inject(MAT_DIALOG_DATA) data) {
+    this.player = data;
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      newPoints: this.currentPoints,
-    });
+    this.reactiveUpdateForm();
+  }
+
+  reactiveUpdateForm(): void {
+    this.updateForm = this.formBuilder.group(
+      {
+        newPoints: [this.player.points_current,
+        [Validators.required, Validators.min(0), Validators.max(99), Validators.maxLength(2)]]
+      });
   }
 
   close(): void {
@@ -37,20 +41,18 @@ export class DialogUpdatePointsComponent implements OnInit {
   }
 
   submitForm(): void {
-    if (this.form.valid) {
+    if (this.updateForm.valid) {
 
       const updatePoints = {
-        player_id: this.idPlayer,
-        points: Number(this.form.value.newPoints)
+        player_id: this.player.ID,
+        points: Number(this.updateForm.value.newPoints)
       };
 
-      console.log(updatePoints);
-
-      this.playerService.updatePoints(updatePoints).subscribe (() => {
-        console.log('maybe put a toast with updated!');
+      this.playerService.updatePoints(updatePoints).subscribe(() => {
+        console.log('aplicar loading e fechar aqui');
       });
 
-      this.dialogRef.close(this.form.value);
+      this.dialogRef.close(this.updateForm.value);
     }
   }
 

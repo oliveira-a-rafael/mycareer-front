@@ -25,8 +25,6 @@ export class CareerService {
   }
 
   getPlayers(id: number): Observable<Player[]> {
-    console.log(`${environment.apiUrl}/career/${id}/players`);
-    
     return this.http.get<Player[]>(`${environment.apiUrl}/career/${id}/players`);
   }
 

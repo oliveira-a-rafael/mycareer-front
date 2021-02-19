@@ -1,17 +1,17 @@
 <mat-card>
 
     <mat-card-title fxLayoutAlign="center">
-        @todo player's name
+        {{ player.name }}
     </mat-card-title>
-
-    <form [formGroup]="form" #resetCareerForm="ngForm">
+    <br />
+    <form [formGroup]="updateForm" #resetCareerForm="ngForm">
         <mat-card-content>
             <mat-card-content>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="New current Points" formControlName="newPoints" required>
+                    <input matInput type="number" placeholder="New current Points" formControlName="newPoints" min="0" max="99" required>
                     <mat-error>
-                        title is required!
+                        Points not permited
                     </mat-error>
                 </mat-form-field>
 
