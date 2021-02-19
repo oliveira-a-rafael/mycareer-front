@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Career } from '@app/models/career/career.model';
 import { Observable } from 'rxjs';
 import { environment } from '@configs/environments/environment';
+import { Player } from '@app/models/player/player';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,12 @@ export class CareerService {
 
   update(id: number, career: Career): Observable<any> {
     return this.http.put(`${environment.apiUrl}/career/${id}`, career);
+  }
+
+  getPlayers(id: number): Observable<Player[]> {
+    console.log(`${environment.apiUrl}/career/${id}/players`);
+    
+    return this.http.get<Player[]>(`${environment.apiUrl}/career/${id}/players`);
   }
 
 }

@@ -25,12 +25,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './components/home/home.component';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
 import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderDefaultComponent } from './components/header/header-default/header-default.component';
-
+import { CareerDetailComponent } from './components/careers/career-detail/career-detail.component';
+import { DialogUpdatePointsComponent } from './components/careers/dialog-update-points/dialog-update-points.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { HeaderDefaultComponent } from './components/header/header-default/heade
     HomeComponent,
     CareersListComponent,
     CareersAddComponent,
-    HeaderDefaultComponent],
+    HeaderDefaultComponent,
+    CareerDetailComponent,
+    DialogUpdatePointsComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -58,6 +63,8 @@ import { HeaderDefaultComponent } from './components/header/header-default/heade
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

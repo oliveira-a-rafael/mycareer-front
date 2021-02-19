@@ -10,7 +10,7 @@ import { CareerService } from '@app/services/careers/career.service';
 })
 export class CareersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'team_name', 'total_players'];
+  displayedColumns: string[] = ['title', 'team_name', 'total_players', 'edit'];
 
   loading = false;
   screenTtile = 'My Careers';
@@ -25,13 +25,19 @@ export class CareersListComponent implements OnInit {
   }
 
   getRecord(row): void {
-    this.router.navigateByUrl('/careers/edit' + row.title);
+    this.router.navigateByUrl('/career/edit' + row.title);
   }
 
   editCareer(career: Career): void {
     this.clearLocalStorage();
     window.localStorage.setItem('objCareer', JSON.stringify(career));
-    this.router.navigate(['careers/edit']);
+    this.router.navigate(['career/edit']);
+  }
+
+  detailCareer(career: Career): void{
+    this.clearLocalStorage();
+    window.localStorage.setItem('objCareer', JSON.stringify(career));
+    this.router.navigate(['career/detail']);
   }
 
   clearLocalStorage(): void{
