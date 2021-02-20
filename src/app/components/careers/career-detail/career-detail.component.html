@@ -84,7 +84,7 @@
 
     </mat-card-content>
     <mat-card-footer style="padding-right: 10px;" fxLayout="row wrap" fxLayoutAlign="center center">
-        <button mat-fab color="primary" routerLink="/player/add" aria-label="Add Career">
+        <button mat-fab color="primary" (click)="addPlayer(career.ID)" aria-label="Add Player">
             <mat-icon>add</mat-icon>
         </button>
     </mat-card-footer>

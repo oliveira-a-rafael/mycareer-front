@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Career } from '@app/models/career/career.model';
 import { Observable } from 'rxjs';
 import { environment } from '@configs/environments/environment';
-import { Player } from '@app/models/player/player';
+import { Player } from '@app/models/player/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,10 @@ export class CareerService {
 
   getAll(): Observable<Career[]> {
     return this.http.get<Career[]>(`${environment.apiUrl}/careers`);
+  }
+
+  get(id: number): Observable<Career> {
+    return this.http.get<Career>(`${environment.apiUrl}/career/${id}`);
   }
 
   create(career: Career): Observable<any> {

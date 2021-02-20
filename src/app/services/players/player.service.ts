@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Player } from '@app/models/player/player';
+import { Player } from '@app/models/player/player.model';
+import { Position } from '@app/models/player/position.model';
 import { environment } from '@configs/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -21,6 +22,10 @@ export class PlayerService {
 
   updatePoints(data: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/player/points`, data);
+  }
+
+  getPositions(): Observable<Position[]> {
+    return this.http.get<Position[]>(`${environment.apiUrl}/positions`);
   }
 
 }

@@ -4,8 +4,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { Component, OnInit } from '@angular/core';
 import { Career } from '@app/models/career/career.model';
-import { Player } from '@app/models/player/player';
+import { Player } from '@app/models/player/player.model';
 import { CareerService } from '@app/services/careers/career.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-career-detail',
@@ -14,11 +15,17 @@ import { CareerService } from '@app/services/careers/career.service';
 })
 export class CareerDetailComponent implements OnInit {
 
+  public car: Career;
+
   career: Career;
   players: Player[];
   loading: boolean;
 
-  constructor(private careerService: CareerService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(
+    private careerService: CareerService,
+    private router: Router,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -72,6 +79,10 @@ export class CareerDetailComponent implements OnInit {
     this.snackBar.open(`Player ${player.name} updated!`, 'ok', {
       duration: 3000,
     });
+  }
+
+  addPlayer(careerID): void{
+    this.router.navigateByUrl(`career/${careerID}/add-player`);
   }
 
 }

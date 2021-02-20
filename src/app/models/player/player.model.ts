@@ -1,5 +1,6 @@
 export class Player {
     ID: number;
+    career_id: number;
     name: string;
     position: string;
     age_current: number;

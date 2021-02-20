@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Player } from '@app/models/player/player';
+import { Player } from '@app/models/player/player.model';
 import { PlayerService } from '@app/services/players/player.service';
 
 @Component({
