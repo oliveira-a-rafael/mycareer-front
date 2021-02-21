@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: '${process.env.BASE_API_URL}'
+    apiUrl: 'http://localhost:8080'
+    // apiUrl: '${process.env.API_BASE_URL}'
 };
