@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    // apiUrl: 'http://localhost:8080'
-    apiUrl: '${process.env.API_BASE_URL}'
+    apiUrl: 'https://my-career-303723.uc.r.appspot.com'
+    // apiUrl: '${process.env.API_BASE_URL}'
 };
