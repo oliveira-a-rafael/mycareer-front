@@ -1,37 +1,22 @@
 <mat-toolbar color="primary" class="expanded-toolbar">
 
-    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
-    <mat-icon>menu</mat-icon>
-  </button>
+    <div fxLayout="row" fxFlex="100">
 
-    <button mat-button>
-      <mat-icon (click)="backClicked()">arrow_back</mat-icon>
-    </button>
+        <div fxLayoutAlign="start center">
+            <button mat-button [mat-menu-trigger-for]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+        </div>
 
-    <div fxLayout="row" fxShow.gt-sm>
-        <span>
-      {{ title }}
-    </span>
-    </div>
+        <div fxFlex="100" fxLayoutAlign="center center">
+            My Career
+        </div>
 
-    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-        <button mat-button routerLink="/login" *ngIf="!currentUser">
-      <mat-icon>power_settings_new</mat-icon>
-      Login
-    </button>
-
-        <button *ngIf="currentUser" mat-button routerLink="/">
-      <mat-icon>home</mat-icon>
-    </button>
-
-        <button *ngIf="currentUser" mat-button routerLink="/careers">
-      <mat-icon>people</mat-icon> Careers
-    </button>
-
-        <button mat-button *ngIf="currentUser" (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      Logout
-    </button>
+        <div fxLayoutAlign="end center">
+            <button mat-button>
+        <mat-icon (click)="backClicked()">arrow_back</mat-icon>
+      </button>
+        </div>
 
     </div>
 

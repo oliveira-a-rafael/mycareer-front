@@ -1,44 +1,36 @@
-<mat-card-content fxLayoutAlign="center">
-    <!-- <div fxLayoutAlign="center"> -->
-    <h2> {{ screenTtile }} </h2>
-    <!-- </div> -->
-</mat-card-content>
+<mat-card>
 
-<table mat-table [dataSource]="careers" class="mat-elevation-z8">
+    <mat-card-content fxLayout="column" fxLayoutGap="5px">
 
-    <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> Ttitle </th>
-        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-    </ng-container>
+        <mat-card *ngFor="let career of careers" (click)="detailCareer(career)" class="mat-elevation-z8">
+            <mat-card-title fxLayout="row">
+                <div fxLayout="column" fxFlex="100">
+                    {{ career.title }}
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end center">
+                    <a mat-flat-button (click)="editCareer(career)">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                </div>
+            </mat-card-title>
 
-    <ng-container matColumnDef="team_name">
-        <th mat-header-cell *matHeaderCellDef> Team Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.team_name}} </td>
-    </ng-container>
+            <mat-card-subtitle fxLayout="row">
+                <div fxLayout="column" fxFlex="50">
+                    {{ career.team_name }}
+                </div>
+                <div fxLayout="column" fxFlex="50">
+                    total players: {{ career.total_players }}
+                </div>
+            </mat-card-subtitle>
 
-    <ng-container matColumnDef="total_players">
-        <th mat-header-cell *matHeaderCellDef> Players </th>
-        <td mat-cell *matCellDef="let element"> {{element.total_players}} </td>
-    </ng-container>
+        </mat-card>
 
-    <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> actions </th>
-        <td mat-cell *matCellDef="let row">
-            <a mat-flat-button (click)="editCareer(row)">
-                <mat-icon>edit</mat-icon>
-            </a>
-        </td>
-    </ng-container>
+        <mat-card-footer fxLayoutAlign="space-around center">
+            <button mat-fab color="primary" routerLink="/career/add" aria-label="Add Career">
+                <mat-icon>add</mat-icon>
+            </button>
+        </mat-card-footer>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="detailCareer(row)"></tr>
+    </mat-card-content>
 
-</table>
-
-<mat-card-content>
-    <div fxLayout="row" fxLayoutAlign="end start">
-        <button mat-fab color="primary" routerLink="/career/add" aria-label="Add Career">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-</mat-card-content>
+</mat-card>
