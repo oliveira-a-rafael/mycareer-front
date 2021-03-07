@@ -1,4 +1,8 @@
-<mat-card fxFlex="100%">
+<div *ngIf="loading" fxLayout style="position:absolute; " fxFill fxLayoutAlign="space-around center">
+    <mat-spinner></mat-spinner>
+</div>
+
+<mat-card *ngIf="!loading" fxFlex="100%">
 
     <mat-card-title fxLayoutAlign="center">
         {{ screenTtile }}

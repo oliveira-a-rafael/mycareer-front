@@ -62,7 +62,7 @@ export class CareerDetailComponent implements OnInit {
     this.career = JSON.parse(objCareer);
   }
 
-  openDialog(player: Player): void {
+  openDialogUpdateCurrentPoints(player: Player): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;

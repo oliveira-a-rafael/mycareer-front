@@ -15,6 +15,7 @@ export class DialogUpdatePointsComponent implements OnInit {
 
   updateForm: FormGroup;
   player: Player;
+  loading: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -26,6 +27,7 @@ export class DialogUpdatePointsComponent implements OnInit {
 
   ngOnInit(): void {
     this.reactiveUpdateForm();
+    this.loading = true;
   }
 
   reactiveUpdateForm(): void {
@@ -37,11 +39,13 @@ export class DialogUpdatePointsComponent implements OnInit {
   }
 
   close(): void {
+    this.loading = false;
     this.dialogRef.close();
   }
 
   submitForm(): void {
     if (this.updateForm.valid) {
+      this.loading = true;
 
       const updatePoints = {
         player_id: this.player.ID,
@@ -52,6 +56,7 @@ export class DialogUpdatePointsComponent implements OnInit {
         console.log('aplicar loading e fechar aqui');
       });
 
+      this.loading = false;
       this.dialogRef.close(this.updateForm.value);
     }
   }

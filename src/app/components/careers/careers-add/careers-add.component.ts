@@ -15,6 +15,7 @@ export class CareersAddComponent implements OnInit {
   screenTtile = 'Add Career';
   careerForm: FormGroup;
   currentCareer: Career;
+  loading: boolean;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -23,8 +24,10 @@ export class CareersAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.retrieveCareerStorage();
     this.reactiveCareerForm();
+    this.loading = false;
   }
 
   clearLocalStorage(): void {
@@ -70,6 +73,7 @@ export class CareersAddComponent implements OnInit {
   createCareer(): void {
     if (this.careerForm.valid) {
       this.careerService.create(this.careerForm.value).subscribe(() => {
+        this.loading = false;
         this.router.navigateByUrl('/careers');
       });
     }
@@ -78,6 +82,7 @@ export class CareersAddComponent implements OnInit {
   updateCareer(): void {
     if (this.careerForm.valid) {
       this.careerService.update(this.currentCareer.ID, this.careerForm.value).subscribe(() => {
+        this.loading = false;
         this.router.navigateByUrl('/careers');
       });
     }
