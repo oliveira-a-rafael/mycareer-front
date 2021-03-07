@@ -3,9 +3,23 @@
 </div>
 
 <mat-card *ngIf="!loading" flexLayoutGap fxLayout="column" style="padding-bottom: 30px;" fxLayoutGap="10px">
+
+    <mat-card-content *ngIf="!career" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <br />
+        <mat-icon>warning</mat-icon>
+        <h3>Nenhum dado encontrado</h3>
+    </mat-card-content>
+
+
     <mat-card-title>{{ career.title }}</mat-card-title>
     <mat-card-subtitle>{{ career.team_name}}</mat-card-subtitle>
     <mat-card-content flexLayoutGap fxLayout="column" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutGap="10px">
+
+        <mat-card-content *ngIf="players.length<1" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <br />
+            <mat-icon>warning</mat-icon>
+            <h3>Nenhum jogador encontrado</h3>
+        </mat-card-content>
 
         <mat-card *ngFor="let player of players">
 
@@ -90,7 +104,7 @@
 
     </mat-card-content>
     <mat-card-footer style="padding-right: 10px;" fxLayout="row wrap" fxLayoutAlign="center center">
-        <button mat-fab color="primary" (click)="addPlayer(career.ID)" aria-label="Add Player">
+        <button matTooltip="Add new player" aria-label="Add new player" mat-fab color="primary" (click)="addPlayer(career.ID)">
             <mat-icon>add</mat-icon>
         </button>
     </mat-card-footer>

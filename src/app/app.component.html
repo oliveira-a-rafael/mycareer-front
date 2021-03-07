@@ -3,13 +3,13 @@
     <div fxLayout="row" fxFlex="100">
 
         <div fxLayoutAlign="start center">
-            <button mat-button [mat-menu-trigger-for]="menu">
+            <button mat-button [mat-menu-trigger-for]="menu" matTooltip="Menu" aria-label="Menu">
         <mat-icon>menu</mat-icon>
       </button>
         </div>
 
         <div fxFlex="100" fxLayoutAlign="center center">
-            My Career
+            <span (click)="goHome()">My Career</span>
         </div>
 
         <div fxLayoutAlign="end center">

@@ -27,9 +27,13 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-
   backClicked(): void {
     this.location.back();
+  }
+
+  goHome(): void{
+    console.log('cliacakdoo');
+    this.router.navigate(['/']);
   }
 
 }

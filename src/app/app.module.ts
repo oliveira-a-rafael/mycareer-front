@@ -31,6 +31,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
 import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
@@ -74,7 +75,8 @@ import { PlayerInfoComponent } from './components/players/player-info/player-inf
     MatSnackBarModule,
     MatSelectModule,
     MatRadioModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
