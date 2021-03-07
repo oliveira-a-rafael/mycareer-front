@@ -1,5 +1,5 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogUpdatePointsComponent } from '@app/components/careers/dialog-update-points/dialog-update-points.component';
+import { DialogUpdatePointsComponent } from '@app/components/career/dialog-update-points/dialog-update-points.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { Component, OnInit } from '@angular/core';

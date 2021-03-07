@@ -4,11 +4,11 @@ import { Career } from '@app/models/career/career.model';
 import { CareerService } from '@app/services/careers/career.service';
 
 @Component({
-  selector: 'app-careers-list',
-  templateUrl: './careers-list.component.html',
-  styleUrls: ['./careers-list.component.css']
+  selector: 'app-career-list',
+  templateUrl: './career-list.component.html',
+  styleUrls: ['./career-list.component.css']
 })
-export class CareersListComponent implements OnInit {
+export class CareerListComponent implements OnInit {
 
   displayedColumns: string[] = ['title', 'team_name', 'total_players', 'edit'];
 

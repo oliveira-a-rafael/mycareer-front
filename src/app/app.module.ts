@@ -33,21 +33,21 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { CareersListComponent } from './components/careers/careers-list/careers-list.component';
-import { CareersAddComponent } from './components/careers/careers-add/careers-add.component';
+import { CareerListComponent } from './components/career/career-list/career-list.component';
+import { CareerAddComponent } from './components/career/career-add/career-add.component';
 import { HeaderDefaultComponent } from './components/header/header-default/header-default.component';
-import { CareerDetailComponent } from './components/careers/career-detail/career-detail.component';
-import { DialogUpdatePointsComponent } from './components/careers/dialog-update-points/dialog-update-points.component';
-import { PlayerAddComponent } from './components/players/player-add/player-add.component';
-import { PlayerInfoComponent } from './components/players/player-info/player-info.component';
+import { CareerDetailComponent } from './components/career/career-detail/career-detail.component';
+import { DialogUpdatePointsComponent } from './components/career/dialog-update-points/dialog-update-points.component';
+import { PlayerAddComponent } from './components/player/player-add/player-add.component';
+import { PlayerInfoComponent } from './components/player/player-info/player-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CareersListComponent,
-    CareersAddComponent,
+    CareerListComponent,
+    CareerAddComponent,
     HeaderDefaultComponent,
     CareerDetailComponent,
     DialogUpdatePointsComponent,

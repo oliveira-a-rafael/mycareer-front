@@ -6,11 +6,11 @@ import { CareerService } from '@app/services/careers/career.service';
 import { Career } from '@app/models/career/career.model';
 
 @Component({
-  selector: 'app-careers-add',
-  templateUrl: './careers-add.component.html',
-  styleUrls: ['./careers-add.component.css']
+  selector: 'app-career-add',
+  templateUrl: './career-add.component.html',
+  styleUrls: ['./career-add.component.css']
 })
-export class CareersAddComponent implements OnInit {
+export class CareerAddComponent implements OnInit {
 
   screenTtile = 'Add Career';
   careerForm: FormGroup;
