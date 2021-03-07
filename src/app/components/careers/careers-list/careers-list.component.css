@@ -5,7 +5,3 @@ table {
 .mat-card-title {
     overflow-wrap: break-word;
 }
-
-.mat-icon {
-    transform: scale(2);
-}

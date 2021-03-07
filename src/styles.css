@@ -9,3 +9,8 @@ body {
 h1 {
     text-align: center;
 }
+
+.not-found {
+    transform: scale(2);
+    color: red;
+}
