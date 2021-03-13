@@ -1,111 +1,108 @@
 <div *ngIf="loading" fxLayout style="position:absolute; " fxFill fxLayoutAlign="space-around center">
-    <mat-spinner></mat-spinner>
+  <mat-spinner></mat-spinner>
 </div>
 
 <mat-card *ngIf="!loading" flexLayoutGap fxLayout="column" style="padding-bottom: 30px;" fxLayoutGap="10px">
 
-    <mat-card-content *ngIf="!career" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
-        <br />
-        <mat-icon>warning</mat-icon>
-        <h3>Nenhum dado encontrado</h3>
+  <mat-card-content *ngIf="!career" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <br/>
+    <mat-icon>warning</mat-icon>
+    <h3>Nenhum dado encontrado</h3>
+  </mat-card-content>
+
+
+  <mat-card-title>{{ career.title }}</mat-card-title>
+  <mat-card-subtitle>{{ career.team_name}}</mat-card-subtitle>
+  <mat-card-content flexLayoutGap fxLayout="column" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutGap="10px">
+
+    <mat-card-content *ngIf="players.length<1" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center"
+                      fxLayoutGap="20px">
+      <br/>
+      <mat-icon class="not-found">warning</mat-icon>
+      <h3>Nenhum jogador encontrado</h3>
     </mat-card-content>
 
+    <mat-card *ngFor="let player of players">
 
-    <mat-card-title>{{ career.title }}</mat-card-title>
-    <mat-card-subtitle>{{ career.team_name}}</mat-card-subtitle>
-    <mat-card-content flexLayoutGap fxLayout="column" fxFlex.xs="100%" fxFlex.sm="33%" fxLayoutGap="10px">
+      <mat-card-title fxLayoutAlign="center center" fxLayout="row">
+        <div style="width: 100%;">
+          {{ player.name }}
+        </div>
+        <div fxLayoutAlign="end Start">
+          <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div style="width: 50px;" fxLayoutAlign="end Start">
+          <button color="warn" mat-icon-button aria-label="Delete player">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card-title>
 
-        <mat-card-content *ngIf="players.length<1" fxFlexFill fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
-            <br />
-            <mat-icon class="not-found">warning</mat-icon>
-            <h3>Nenhum jogador encontrado</h3>
-        </mat-card-content>
+      <mat-card-content fxLayout="column" fxFlexFill fxLayoutGap="10px">
 
-        <mat-card *ngFor="let player of players">
-
-            <mat-card-title fxLayoutAlign="center center" fxLayout="row" s>
-                <div style="width: 100%;">
-                    {{ player.name }}
-                </div>
-                <div fxLayoutAlign="end Start">
-                    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                </div>
-                <div style="width: 50px;" fxLayoutAlign="end Start">
-                    <button color="warn" mat-icon-button aria-label="Delete player">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
+        <div fxFlexFill fxLayoutGap="10px">
+          <mat-card class="mat-elevation-z4" fxFlex="100" style="background-color: lightgray">
+            <mat-card-title fxLayoutAlign="center">
+              {{ player.position }} / {{ player.age_current }} years
             </mat-card-title>
+          </mat-card>
+        </div>
 
-            <mat-card-content>
+        <h2>Points</h2>
+        <div fxFlexFill fxLayoutGap="10px">
 
-                <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+          <mat-card class="mat-elevation-z4" fxFlex="50" style="background-color: lightyellow;">
+            <mat-card-subtitle fxLayoutAlign="center">
+              Initial
+            </mat-card-subtitle>
+            <mat-card-title fxLayoutAlign="center">
+              {{ player.points_initial }}
+            </mat-card-title>
+          </mat-card>
 
-                    <mat-card class="mat-elevation-z4" style="background-color: lightgray">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Position
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center">
-                            {{ player.position }}
-                        </mat-card-title>
-                    </mat-card>
+          <mat-card class="mat-elevation-z4" fxFlex="50" (click)="openDialogUpdateCurrentPoints(player)"
+                    style="background-color: lightskyblue;">
+            <mat-card-subtitle fxLayoutAlign="center">
+              Current
+            </mat-card-subtitle>
+            <mat-card-title fxLayoutAlign="center">
+              {{ player.points_current }} <mat-icon>edit</mat-icon>
+            </mat-card-title>
+          </mat-card>
+        </div>
 
-                    <mat-card class="mat-elevation-z4" style="background-color: lightgray">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Age current
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center">
-                            {{ player.age_current }}
-                        </mat-card-title>
-                    </mat-card>
+          <h2>Potencial</h2>
+          <div fxFlexFill fxLayoutGap="10px">
+          <mat-card class="mat-elevation-z4" fxFlex="50" style="background-color: lightyellow;">
+            <mat-card-subtitle fxLayoutAlign="center">
+              Initial
+            </mat-card-subtitle>
+            <mat-card-title fxLayoutAlign="center">
+              {{ player.potential_initial }}
+            </mat-card-title>
+          </mat-card>
 
-                    <mat-card class="mat-elevation-z4" style="background-color: lightyellow;">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Points Initial
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center">
-                            {{ player.points_initial }}
-                        </mat-card-title>
-                    </mat-card>
+          <mat-card class="mat-elevation-z4" fxFlex="50" style="background-color: lightyellow;">
+            <mat-card-subtitle fxLayoutAlign="center">
+              Final
+            </mat-card-subtitle>
+            <mat-card-title fxLayoutAlign="center" style="color: red;">
+              {{ player.potential_final }}
+            </mat-card-title>
+          </mat-card>
+        </div>
 
-                    <mat-card class="mat-elevation-z4" (click)="openDialogUpdateCurrentPoints(player)" style="background-color: lightskyblue;">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Points Current
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center">
-                            {{ player.points_current }}
-                        </mat-card-title>
-                    </mat-card>
+      </mat-card-content>
 
-                    <mat-card class="mat-elevation-z4" style="background-color: lightyellow;">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Potencial Initial
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center">
-                            {{ player.potential_initial }}
-                        </mat-card-title>
-                    </mat-card>
+    </mat-card>
 
-                    <mat-card class="mat-elevation-z4" style="background-color: lightyellow;">
-                        <mat-card-subtitle fxLayoutAlign="center">
-                            Potencial Final
-                        </mat-card-subtitle>
-                        <mat-card-title fxLayoutAlign="center" style="color: red;">
-                            {{ player.potential_final }}
-                        </mat-card-title>
-                    </mat-card>
-
-                </div>
-            </mat-card-content>
-
-        </mat-card>
-
-    </mat-card-content>
-    <mat-card-footer style="padding-right: 10px;" fxLayout="row wrap" fxLayoutAlign="center center">
-        <button matTooltip="Add new player" aria-label="Add new player" mat-fab color="primary" (click)="addPlayer(career.ID)">
-            <mat-icon>add</mat-icon>
-        </button>
-    </mat-card-footer>
+  </mat-card-content>
+  <mat-card-footer style="padding-right: 10px;" fxLayout="row wrap" fxLayoutAlign="center center">
+    <button matTooltip="Add new player" aria-label="Add new player" mat-fab color="primary"
+            (click)="addPlayer(career.ID)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-footer>
 </mat-card>
