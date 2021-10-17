@@ -1,44 +1,42 @@
 <mat-toolbar color="primary" class="expanded-toolbar">
-
-    <div fxLayout="row" fxFlex="100">
-
-        <div fxLayoutAlign="start center">
-            <button mat-button [mat-menu-trigger-for]="menu" matTooltip="Menu" aria-label="Menu">
+  <div fxLayout="row" fxFlex="100">
+    <div fxLayoutAlign="start center">
+      <button
+        mat-button
+        [mat-menu-trigger-for]="menu"
+        matTooltip="Menu"
+        aria-label="Menu"
+      >
         <mat-icon>menu</mat-icon>
       </button>
-        </div>
-
-        <div fxFlex="100" fxLayoutAlign="center center">
-            <span (click)="goHome()">My Career</span>
-        </div>
-
-        <div fxLayoutAlign="end center">
-            <button mat-button>
-        <mat-icon (click)="backClicked()">arrow_back</mat-icon>
-      </button>
-        </div>
-
     </div>
 
+    <div fxFlex="100" fxLayoutAlign="center center">
+      <span (click)="goHome()">My Career</span>
+    </div>
+
+    <div fxLayoutAlign="end center">
+      <button mat-button>
+        <mat-icon (click)="backClicked()">arrow_back</mat-icon>
+      </button>
+    </div>
+  </div>
 </mat-toolbar>
 
 <mat-menu x-position="before" #menu="matMenu">
-
-    <button mat-menu-item routerLink="/">
+  <button mat-menu-item routerLink="/">
     <mat-icon>home</mat-icon>
     Home
   </button>
 
-    <button *ngIf="currentUser" mat-menu-item routerLink="/careers">
+  <button *ngIf="currentUser" mat-menu-item routerLink="/careers">
     <mat-icon>people</mat-icon> Careers
   </button>
 
-    <button mat-menu-item *ngIf="currentUser" (click)="logout()">
+  <button mat-menu-item *ngIf="currentUser" (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
     Logout
   </button>
 </mat-menu>
 
-<router-outlet>
-
-</router-outlet>
+<router-outlet> </router-outlet>

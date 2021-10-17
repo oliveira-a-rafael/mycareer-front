@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -16,31 +16,36 @@ export class CareerAddComponent implements OnInit {
   careerForm: FormGroup;
   currentCareer: Career;
   loading: boolean;
+  privatecareerId: any;
+  private careerId: any;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     public formBuilder: FormBuilder,
-    private careerService: CareerService,
-    private router: Router) {
+    private careerService: CareerService) {
   }
 
   ngOnInit(): void {
     this.loading = true;
-    this.retrieveCareerStorage();
+    this.careerId = this.route.snapshot.params['id'];
+    this.retrieveCareer();
     this.reactiveCareerForm();
     this.loading = false;
   }
 
-  clearLocalStorage(): void {
-    window.localStorage.removeItem('objCareer');
-  }
-
-  retrieveCareerStorage(): void {
-    const objCareer = localStorage.getItem('objCareer');
-    if (!objCareer) {
-      console.log('error on load object career!');
-      return;
-    }
-    this.currentCareer = JSON.parse(objCareer);
+  retrieveCareer(): void {    
+    this.careerService.get(this.careerId)
+    .subscribe(
+      data => {
+        this.loading = false;
+        this.currentCareer = data;
+      },
+      err => {
+        console.log('erros on retrieve carrer detail: ' + err);
+        this.loading = false;
+      }
+    );
   }
 
   reactiveCareerForm(): void {

@@ -19,29 +19,17 @@ export class CareerListComponent implements OnInit {
   constructor(private careerService: CareerService, private router: Router) { }
 
   ngOnInit(): void {
-    this.clearLocalStorage();
     this.loading = true;
     this.retrieveCareers();
   }
 
-  getRecord(row): void {
-    this.router.navigateByUrl('/career/edit' + row.title);
+  editCareer(careerId: any): void {
+    this.router.navigate(['career/edit', careerId]);
   }
 
-  editCareer(career: Career): void {
-    this.clearLocalStorage();
-    window.localStorage.setItem('objCareer', JSON.stringify(career));
-    this.router.navigate(['career/edit']);
-  }
-
-  detailCareer(career: Career): void{
-    this.clearLocalStorage();
-    window.localStorage.setItem('objCareer', JSON.stringify(career));
-    this.router.navigate(['career/detail']);
-  }
-
-  clearLocalStorage(): void{
-    window.localStorage.removeItem('objCareer');
+  detailCareer(careerId: any): void{
+    // this.router.navigate(['career/show', careerId]);
+    this.router.navigate(['career/players', careerId]);
   }
 
   retrieveCareers(): void {

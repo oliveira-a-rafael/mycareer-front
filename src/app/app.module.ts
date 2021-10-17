@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { JwtInterceptor } from '@app/helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@app/helpers/error.interceptor';
 
@@ -18,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,7 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { CareerListComponent } from './components/career/career-list/career-list.component';
 import { CareerAddComponent } from './components/career/career-add/career-add.component';
@@ -41,6 +41,7 @@ import { CareerDetailComponent } from './components/career/career-detail/career-
 import { DialogUpdatePointsComponent } from './components/career/dialog-update-points/dialog-update-points.component';
 import { PlayerAddComponent } from './components/player/player-add/player-add.component';
 import { PlayerInfoComponent } from './components/player/player-info/player-info.component';
+import { PlayerListComponent } from './components/player/player-list/player-list.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { PlayerInfoComponent } from './components/player/player-info/player-info
     CareerDetailComponent,
     DialogUpdatePointsComponent,
     PlayerAddComponent,
-    PlayerInfoComponent],
+    PlayerInfoComponent,
+    PlayerListComponent,
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -69,6 +72,7 @@ import { PlayerInfoComponent } from './components/player/player-info/player-info
     MatIconModule,
     MatButtonModule,
     MatTableModule,
+    MatSortModule,
     MatListModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
@@ -78,12 +82,12 @@ import { PlayerInfoComponent } from './components/player/player-info/player-info
     MatRadioModule,
     MatButtonToggleModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

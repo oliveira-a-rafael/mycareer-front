@@ -144,7 +144,6 @@ export class PlayerAddComponent implements OnInit {
       this.player.career_id = this.careerId;
       this.playerService.create(this.player).subscribe(() => {
         this.router.navigateByUrl(`/careers`);
-        // @todo colocar o navigation para detail, mudar para pegar o id e náo localstorage
       }, err => {
         console.log('error on create player');
       });

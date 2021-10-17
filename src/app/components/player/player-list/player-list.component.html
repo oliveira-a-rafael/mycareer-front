@@ -1,0 +1,69 @@
+<div
+  *ngIf="loading"
+  fxLayout
+  style="position: absolute"
+  fxFill
+  fxLayoutAlign="space-around center"
+>
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading">
+  <table
+    sh
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    class="mat-elevation-z8"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let player">{{ player.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>position</th>
+      <td mat-cell *matCellDef="let player">{{ player.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="age_current">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>age_current</th>
+      <td mat-cell *matCellDef="let player">{{ player.age_current }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="age_initial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>age_initial</th>
+      <td mat-cell *matCellDef="let player">{{ player.age_initial }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="points_current">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>points_current</th>
+      <td mat-cell *matCellDef="let player">{{ player.points_current }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="points_initial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>points_initial</th>
+      <td mat-cell *matCellDef="let player">{{ player.points_initial }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="potential_initial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        potential_initial
+      </th>
+      <td mat-cell *matCellDef="let player">{{ player.potential_initial }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="potential_final">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>potential_final</th>
+      <td mat-cell *matCellDef="let player">{{ player.potential_final }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="strong_foot">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>strong_foot</th>
+      <td mat-cell *matCellDef="let player">{{ player.strong_foot }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Career } from '@app/models/career/career.model';
 import { Player } from '@app/models/player/player.model';
 import { CareerService } from '@app/services/careers/career.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-career-detail',
@@ -15,13 +15,14 @@ import { Router } from '@angular/router';
 })
 export class CareerDetailComponent implements OnInit {
 
-  public car: Career;
+  private careerId: any;
 
   career: Career;
   players: Player[];
   loading: boolean;
 
   constructor(
+    private route: ActivatedRoute,
     private careerService: CareerService,
     private router: Router,
     private dialog: MatDialog,
@@ -29,8 +30,8 @@ export class CareerDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.retrieveCareerStorage();
-    this.retrievePlayers();
+    this.careerId = this.route.snapshot.params['id'];
+    this.retrieveCareer();
   }
 
   retrievePlayers(): void {
@@ -49,17 +50,19 @@ export class CareerDetailComponent implements OnInit {
     }
   }
 
-  clearLocalStorage(): void {
-    window.localStorage.removeItem('objCareer');
-  }
-
-  retrieveCareerStorage(): void {
-    const objCareer = localStorage.getItem('objCareer');
-    if (!objCareer) {
-      console.log('error on load object career!');
-      return;
-    }
-    this.career = JSON.parse(objCareer);
+  retrieveCareer(): void {    
+    this.careerService.get(this.careerId)
+    .subscribe(
+      data => {
+        this.loading = false;
+        this.career = data;
+        this.retrievePlayers();
+      },
+      err => {
+        console.log('erros on retrieve carrer detail: ' + err);
+        this.loading = false;
+      }
+    );
   }
 
   openDialogUpdateCurrentPoints(player: Player): void {
@@ -81,8 +84,8 @@ export class CareerDetailComponent implements OnInit {
     });
   }
 
-  addPlayer(careerID): void{
-    this.router.navigateByUrl(`career/${careerID}/add-player`);
+  addPlayer(careerId): void{
+    this.router.navigate(['career/add-player/', careerId]);
   }
 
 }

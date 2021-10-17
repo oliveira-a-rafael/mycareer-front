@@ -12,13 +12,13 @@
             <h3>Nenhum dado encontrado</h3>
         </div>
 
-        <mat-card *ngFor="let career of careers" (click)="detailCareer(career)" class="mat-elevation-z8">
+        <mat-card *ngFor="let career of careers" (click)="detailCareer(career.ID)" class="mat-elevation-z8">
             <mat-card-title fxLayout="row">
                 <div fxLayout="column" fxFlex="100">
                     {{ career.title }}
                 </div>
                 <div fxLayout="column" fxLayoutAlign="end center">
-                    <a mat-flat-button (click)="editCareer(career)">
+                    <a mat-flat-button (click)="editCareer(career.ID)">
                         <mat-icon>edit</mat-icon>
                     </a>
                 </div>

@@ -32,7 +32,6 @@ export class AppComponent {
   }
 
   goHome(): void{
-    console.log('cliacakdoo');
     this.router.navigate(['/']);
   }
 
