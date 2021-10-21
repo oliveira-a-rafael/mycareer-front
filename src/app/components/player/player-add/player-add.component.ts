@@ -28,13 +28,14 @@ export class PlayerAddComponent implements OnInit {
     private careerService: CareerService,
     private playerService: PlayerService,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
     this.loading = true;
-    this.getParams();
+    this.careerId = this.route.snapshot.params['id'];
     this.retrieveCareer();
   }
 
@@ -45,17 +46,6 @@ export class PlayerAddComponent implements OnInit {
       this.loading = false;
     }, err => {
       console.log('error on retreive: ' + err);
-    });
-  }
-
-  getParams(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      const paramId = params.get('id');
-      if (!isNaN(Number(paramId))) {
-        this.careerId = Number(paramId);
-      }
-    }, err => {
-      console.log('error on get param');
     });
   }
 
@@ -129,6 +119,7 @@ export class PlayerAddComponent implements OnInit {
   }
 
   submitPlayerForm(): void {
+    this.loading = true;
     if (this.playerForm.valid) {
       // if (this.currentCareer && this.currentCareer.ID) {
       // this.updateCareer();
@@ -141,13 +132,14 @@ export class PlayerAddComponent implements OnInit {
   createPlayer(): void {
     if (this.playerForm.valid) {
       this.player = this.playerForm.value;
-      this.player.career_id = this.careerId;
+      this.player.career_id = Number(this.careerId);
       this.playerService.create(this.player).subscribe(() => {
         this.router.navigateByUrl(`/careers`);
       }, err => {
-        console.log('error on create player');
+        console.log('error on create player', err);
       });
     }
+    this.loading = false;
   }
 
   getPositions(): void {

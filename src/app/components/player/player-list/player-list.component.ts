@@ -53,7 +53,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   addPlayer(): void {
-    this.router.navigate(['career/add-player/', this.careerId]);
+    this.router.navigate(['/career/add-player/', this.careerId]);
   }
 
   retrievePlayers(): void {
