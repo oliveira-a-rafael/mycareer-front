@@ -9,6 +9,16 @@
 </div>
 
 <div *ngIf="!loading">
+  <button
+    matTooltip="Add new player"
+    aria-label="Add new player"
+    mat-fab
+    color="primary"
+    (click)="(addPlayer)"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+
   <table
     sh
     mat-table

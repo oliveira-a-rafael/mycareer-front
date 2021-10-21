@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Player } from '@app/models/player/player.model';
 import { CareerService } from '@app/services/careers/career.service';
 
@@ -34,7 +34,8 @@ export class PlayerListComponent implements OnInit {
 
   constructor(
     private careerService: CareerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +50,10 @@ export class PlayerListComponent implements OnInit {
       this.dataSource.data = this.players;
       this.dataSource.sort = this.sort;
     }
+  }
+
+  addPlayer(): void {
+    this.router.navigate(['career/add-player/', this.careerId]);
   }
 
   retrievePlayers(): void {
